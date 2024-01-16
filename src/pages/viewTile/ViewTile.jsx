@@ -1,12 +1,19 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TitleCard from "../../components/Card/TitleCard";
 
 import "./viewTile.scss";
+import { useEffect } from "react";
+import { getStoryData } from "../../store/action";
 
 function ViewTile() {
+  const dispatch = useDispatch();
   const titleData = useSelector(
     (state) => state?.oneMinuteStory?.storyData || []
   );
+
+  useEffect(() => {
+    dispatch(getStoryData());
+  }, [dispatch]);
 
   const renderTile = (data) => {
     return data?.map((tile, idx) => {

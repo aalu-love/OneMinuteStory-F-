@@ -1,18 +1,9 @@
 import { Button } from "antd";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getStoryData } from "../../store/action";
 import { NavLink } from "react-router-dom";
 
 import "./homepage.scss";
 
 function HomePage2() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getStoryData());
-  }, []);
-
   return (
     <section id="homepage-jsx">
       <div className="main-container">
