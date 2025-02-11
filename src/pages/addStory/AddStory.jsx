@@ -33,7 +33,7 @@ function AddStory({ titleData }) {
     const onFinish = (values) => {
         // setFormData(values);
         if (currentUser?.email) {
-            console.log("Success:", values);
+            // console.log("Success:", values);
             const data = {
                 title: values.title,
                 story: [
@@ -48,7 +48,7 @@ function AddStory({ titleData }) {
             // setTimerStarted(false);
             setIsTyping(false);
             resetData();
-            console.log("EMAILLL", currentUser);
+            // console.log("EMAILLL", currentUser);
             dispatch(
                 setStoryData(
                     data?.title,
@@ -109,13 +109,13 @@ function AddStory({ titleData }) {
     };
 
     const handleTimeout = () => {
-        console.log("Timer expired!");
+        // console.log("Timer expired!");
         setIsTyping(false);
     };
 
-    if (remainingTime === 0) {
-        console.log("Timer expired!");
-    }
+    // if (remainingTime === 0) {
+    //     console.log("Timer expired!");
+    // }
 
     const resetData = () => {
         setIsTyping(false);

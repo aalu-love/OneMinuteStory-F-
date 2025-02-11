@@ -11,7 +11,7 @@ function StoryCard({ storyData, id }) {
 
     const deleteStory = (id) => {
         dispatch(deleteStoryData(id));
-        console.log("IDDDD", id);
+        // console.log("IDDDD", id);
     }
 
     return (

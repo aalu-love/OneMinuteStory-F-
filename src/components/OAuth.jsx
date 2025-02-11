@@ -27,25 +27,25 @@ function OAuth(data) {
             if (loginType === 'signin') {
                 dispatch(signInUserGoogle(email, googleUsed));
                 navigate('/');          // After login it would navigate to home page
-                console.log("signin");
+                // console.log("signin");
             }
             else {
                 dispatch(signUpUserGoogle(displayName, email, photoURL, googleUsed));
                 navigate('/');
-                console.log('signup');
+                // console.log('signup');
             }
         }
         catch (error) {
 
             if (loginType === 'signin') {
                 dispatch(signInUserGoogle(error));
-                console.log("signin");
+                // console.log("signin");
             }
             else {
                 dispatch(signUpUserGoogle(error));
-                console.log('signup');
+                // console.log('signup');
             }
-            console.log("Could not login with google", error);
+            // console.log("Could not login with google", error);
         }
     }
 

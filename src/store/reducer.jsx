@@ -13,6 +13,7 @@ import {
     DELETE_USER,
     SIGNOUT_USER,
     UPDATE_USER_ERROR,
+    GENERATE_STORY_DATA
 } from "./action-types";
 
 const initialState = {
@@ -24,7 +25,8 @@ const initialState = {
     loading: false,
     error: false,
     user: null,
-    updateError: false
+    updateError: false,
+    generatedStory: {},
 };
 
 const storyReducer = (state = initialState, action) => {
@@ -35,6 +37,9 @@ const storyReducer = (state = initialState, action) => {
         case SET_STORY_DATA:
             return { ...state, addedStory: action.payload };
 
+        case GENERATE_STORY_DATA:
+            return { ...state, generatedStory: action.payload };
+
         case DELETE_STORY_DATA:
             return { ...state, deletedStory: action.payload };
 
@@ -42,11 +47,11 @@ const storyReducer = (state = initialState, action) => {
             return { ...state, titleId: action.payload };
 
         case UPDATE_USER:
-            console.log("HERE", action);
+            // console.log("HERE", action);
             return { ...state, currentUser: action.payload, updateError: action.updateError };
 
         case UPDATE_USER_ERROR:
-            console.log("HERE", action);
+            // console.log("HERE", action);
             return { ...state, updateError: action.payload };
         
         case DELETE_USER:

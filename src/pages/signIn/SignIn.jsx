@@ -35,7 +35,7 @@ function SignIn() {
             // }
 
 
-            console.log("Error Status", errorStatus);
+            // console.log("Error Status", errorStatus);
             // setError(false);
             // if there is no error while signing in then it will navigate to homepage
             // if (error === false) {
@@ -44,9 +44,9 @@ function SignIn() {
         } catch (error) {
             // setLoading(false);
             setError(true);
-            console.log("Error inside", error);
+            // console.log("Error inside", error);
 
-            console.log("Error Sign in", error);
+            // console.log("Error Sign in", error);
             dispatch(signInUser(error));
         }
     };

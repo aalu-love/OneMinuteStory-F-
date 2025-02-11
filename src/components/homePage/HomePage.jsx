@@ -15,13 +15,13 @@ function HomePage() {
 
     const StoryData = useSelector((state) => state?.oneMinuteStory?.storyData);
 
-    console.log("STORY DATA", StoryData)
+    // console.log("STORY DATA", StoryData)
 
     // console.log("THE DATA", StoryData);
 
     useEffect(() => {
         dispatch(getStoryData());
-        console.log("UseEffect");
+        // console.log("UseEffect");
     }, [story])                     // to be checked with StoryData
 
     const handlePaste = (e) => {
@@ -31,7 +31,7 @@ function HomePage() {
     const handleAddStory = () => {
         // Handle adding the story logic here
         dispatch(setStoryData(story))
-        console.log('Button', story);
+        // console.log('Button', story);
         setStory('');
     };
 
