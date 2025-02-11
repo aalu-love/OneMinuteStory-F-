@@ -22,7 +22,7 @@ function AddExistingStory({ title }) {
 
     const onFinish = (values) => {
         // setFormData(values);
-        console.log('Success:', values);
+        // console.log('Success:', values);
         const data = {
             title: values.title,
             story: [
@@ -37,7 +37,7 @@ function AddExistingStory({ title }) {
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
-        console.log("ERROR");
+        // console.log("ERROR");
     };
 
     useEffect(() => {
@@ -64,14 +64,14 @@ function AddExistingStory({ title }) {
     };
 
     const handleTimeout = () => {
-        console.log('Timer expired!');
+        // console.log('Timer expired!');
         setIsTyping(false);
         // Perform any actions you want when the timer expires
     };
 
-    if (remainingTime === 0) {
-        console.log('Timer expired!');
-    }
+    // if (remainingTime === 0) {
+    //     // console.log('Timer expired!');
+    // }
 
     const resetData = () => {
         setIsTyping(false);

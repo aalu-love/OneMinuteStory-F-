@@ -57,7 +57,7 @@ function TitleCard({ titleData, id, email, author, likes, likedBy }) {
                 // setLiked(!liked);
                 // console.log("CLICKED", id, email);
             } catch (error) {
-                console.log("Error in liking Story");
+                // console.log("Error in liking Story");
             }
         }
     };

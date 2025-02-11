@@ -36,12 +36,12 @@ function SignUp() {
             );
 
             // const data = await res.json();
-            console.log("success", currentUser.success);
+            // console.log("success", currentUser.success);
             if (!currentUser.error) {
                 setLoading(false);
                 setError(false);
                 navigate("/sign-in");
-                console.log("SZDXGCFJBHKNJKML");
+                // console.log("SZDXGCFJBHKNJKML");
                 return;
             }
 

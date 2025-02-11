@@ -7,10 +7,18 @@
     }
 
     .title-container {
-        margin-bottom: 1.25rem /* 20px */;
-        margin-top: 1.25rem /* 20px */;
-        font-size: 1.875rem /* 30px */;
-        line-height: 2.25rem /* 36px */;
+        margin-bottom: 1.25rem
+            /* 20px */
+        ;
+        margin-top: 1.25rem
+            /* 20px */
+        ;
+        font-size: 1.875rem
+            /* 30px */
+        ;
+        line-height: 2.25rem
+            /* 36px */
+        ;
         display: flex;
         justify-content: center;
     }
@@ -22,7 +30,8 @@
     .story-container {
         display: flex;
         flex-direction: column;
-        gap: 10px; /* Adjust the gap between stories as needed */
+        gap: 10px;
+        /* Adjust the gap between stories as needed */
         padding: 20px;
         // background-color: #f2f2f2; /* Adjust the background color as needed */
         // border-radius: 8px;
@@ -30,9 +39,11 @@
     }
 
     .story-container div {
-        margin-bottom: 10px; /* Adjust the margin between each story as needed */
+        margin-bottom: 10px;
+        /* Adjust the margin between each story as needed */
         padding: 10px;
-        border: 1px solid #ccc; /* Add a border to each story */
+        border: 1px solid #ccc;
+        /* Add a border to each story */
         border-radius: 4px;
     }
 
@@ -49,9 +60,127 @@
         justify-content: center;
         align-items: center;
         gap: 5px;
+
         .para-switch {
             background-color: #0c3283;
         }
+    }
+
+    .button-container {
+        display: flex;
+        gap: 1.5rem
+            /* 24px */
+        ;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .disabled-button-container {
+        display: flex;
+        gap: 1.5rem
+            /* 24px */
+        ;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button-container button {
+        font-size: 0.8rem
+            /* 24px */
+        ;
+        line-height: 2rem
+            /* 32px */
+        ;
+        height: fit-content;
+        padding-block: 4px;
+        padding-inline: 15px;
+        --tw-bg-opacity: 1;
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        --tw-text-opacity: 1;
+        color: rgb(255 255 255 / var(--tw-text-opacity));
+        text-transform: uppercase;
+        font-weight: 600;
+        border-radius: 8px
+            /* 24px */
+        ;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    .disabled-button-container button,
+    .disable-button-container button {
+        font-size: 0.8rem
+            /* 24px */
+        ;
+        line-height: 2rem
+            /* 32px */
+        ;
+        height: fit-content;
+        padding-block: 4px;
+        padding-inline: 15px;
+        --tw-bg-opacity: 1;
+        background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+        --tw-text-opacity: 1;
+        color: rgb(255 255 255 / var(--tw-text-opacity));
+        text-transform: uppercase;
+        font-weight: 600;
+        border-radius: 8px
+            /* 24px */
+        ;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        opacity: 0.5;
+    }
+
+    .button-container button:hover {
+        --tw-translate-y: -0.5rem
+            /* -8px */
+        ;
+        border-color: #fff;
+        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    }
+
+
+    .generatedStory-container {
+        margin-top: 10px;
+        /* Adjust the margin between each story as needed */
+        margin-bottom: 10px;
+        /* Adjust the margin between each story as needed */
+        padding: 10px;
+        border: 1px solid #ccc;
+        /* Add a border to each story */
+        border-radius: 4px;
+        width: 700px;
+    }
+
+    .button-container button[title]::after,
+    .disabled-button-container button[title]::after {
+        content: attr(title);
+        display: block;
+        font-size: 0.75rem;
+        /* Adjust the font size as needed */
+        color: #fff;
+        /* Adjust the text color as needed */
+        background-color: rgba(0, 0, 0, 0.75);
+        /* Adjust the background color as needed */
+        padding: 4px 8px;
+        /* Adjust the padding as needed */
+        border-radius: 4px;
+        /* Adjust the border radius as needed */
+        position: absolute;
+        bottom: 100%;
+        /* Position above the button */
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s;
+        margin-bottom: 8px;
+        /* Add some margin to position it above the button */
+    }
+
+    .button-container button:hover[title]::after,
+    .disabled-button-container button:hover[title]::after {
+        opacity: 1;
     }
 
     @media screen and (max-width: 768px) {
@@ -61,20 +190,28 @@
             justify-content: center;
             flex-direction: column;
         }
-    
+
         .title-container {
-            margin-bottom: 1.25rem /* 20px */;
-            margin-top: 1.25rem /* 20px */;
-            font-size: 1.875rem /* 30px */;
-            line-height: 2.25rem /* 36px */;
+            margin-bottom: 1.25rem
+                /* 20px */
+            ;
+            margin-top: 1.25rem
+                /* 20px */
+            ;
+            font-size: 1.875rem
+                /* 30px */
+            ;
+            line-height: 2.25rem
+                /* 36px */
+            ;
             display: flex;
             justify-content: center;
         }
-    
+
         .title-container label {
             font-weight: 700;
         }
-    
+
         .story-container {
             display: flex;
             flex-direction: column;
@@ -85,34 +222,71 @@
             // border-radius: 8px;
             // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adjust the box shadow as needed */
         }
-    
+
         .story-container div {
-            margin-bottom: 10px; /* Adjust the margin between each story as needed */
+            margin-bottom: 10px;
+            /* Adjust the margin between each story as needed */
             margin-left: -5.1rem;
             padding: 10px;
             width: 18rem;
-            border: 1px solid #ccc; /* Add a border to each story */
+            border: 1px solid #ccc;
+            /* Add a border to each story */
             border-radius: 4px;
         }
-    
+
+        .generatedStory-container {
+            margin-bottom: 10px;
+            /* Adjust the margin between each story as needed */
+            // margin-left: -1.1rem;
+            padding: 10px;
+            width: 18rem;
+            border: 1px solid #ccc;
+            /* Add a border to each story */
+            border-radius: 4px;
+        }
+
         // .storyFeed-paragraph {
         //     width: 18rem;
         // }
-    
+
         .add-story-wrapper {
             margin-top: 10px !important;
         }
-    
+
         .para-switch-container {
             display: flex;
             font-size: 1.2rem;
             justify-content: center;
             align-items: center;
             gap: 5px;
+
             .para-switch {
                 background-color: #0c3283;
             }
         }
-    
+
+        .disabled-button-container button,
+        .disable-button-container button {
+            font-size: 0.8rem
+                /* 24px */
+            ;
+            line-height: 2rem
+                /* 32px */
+            ;
+            height: fit-content;
+            padding-block: 4px;
+            padding-inline: 15px;
+            --tw-bg-opacity: 1;
+            background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity));
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 8px
+                /* 24px */
+            ;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            opacity: 0.5;
+        }
     }
 }
