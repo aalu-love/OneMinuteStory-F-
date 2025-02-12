@@ -92,6 +92,9 @@ function StoryFeed() {
       setGeneratedStory(
         "Sorry, we could not generate a story for you. Please try again later."
       );
+      setTimeout(() => {
+        setDisabledGenerateButton(false);
+      }, 5000);
       console.error("Error generating story:", error);
     }
   };
@@ -127,7 +130,9 @@ function StoryFeed() {
                   disabled={disabledGenerateButton}
                   onClick={handleGenerateStory}
                   title={
-                    disabledGenerateButton ? "Please wait for 5 seconds" : undefined
+                    disabledGenerateButton
+                      ? "Please wait for 5 seconds"
+                      : undefined
                   }
                 >
                   AUTO GENERATE
