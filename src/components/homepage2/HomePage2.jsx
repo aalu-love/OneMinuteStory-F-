@@ -24,7 +24,7 @@ function HomePage2() {
                     </p> */}
           <p className="title">One Minute Story</p>
           <p className="description">
-            Ignite creativity in 60 seconds! Choose a title, feel the rush, and
+            Ignite creativity in 60 seconds! Choose a title, feel the rush, and 
             craft captivating tales against the clock. Join a vibrant community
             of storytellers for an exhilarating journey.
           </p>
