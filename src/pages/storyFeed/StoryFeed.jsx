@@ -82,7 +82,7 @@ function StoryFeed() {
       //   generatedStoryData.generatedStory.data.generatedStoryData
       // );
       setGeneratedStory(
-        generatedStoryData.generatedStory.data.generatedStoryData
+        generatedStoryData.generatedStory.data.generatedStoryData    // TODO: make this look better
       );
       setGeneratedStoryDataAdded(false);
       setTimeout(() => {
