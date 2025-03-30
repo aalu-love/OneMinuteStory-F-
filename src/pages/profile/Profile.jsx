@@ -32,10 +32,12 @@ export default function Profile() {
   const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
   const [showUpdated, setShowUpdate] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
+  const showModal = (params) => {
+    setModalContent(params);
     setIsModalOpen(true);
   };
   const handleOk = () => {
@@ -182,22 +184,26 @@ export default function Profile() {
           </button>
         </form>
         <div className="flex justify-between mt-5">
-          <span onClick={showModal} className="text-red-700 cursor-pointer">
+          <span
+            onClick={() => showModal("delete")}
+            className="text-red-700 cursor-pointer"
+          >
             Delete Account
           </span>
           <Modal
             className="mt-60"
-            title="Delete Account"
+            title={modalContent === "delete" ? "Delete Account" : "Sign Out"}
             open={isModalOpen}
             // onOk={handleOk}
             onCancel={handleCancel}
             footer={[
               <button
                 key="submit"
-                onClick={handleDeleteUser}
+                onClick={
+                  modalContent === "delete" ? handleDeleteUser : handleSignout
+                }
                 className="bg-green-700 text-white p-2 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 mr-3"
               >
-                {" "}
                 Confirm{" "}
               </button>,
 
@@ -212,11 +218,16 @@ export default function Profile() {
             ]}
           >
             <p className="font-semibold">
-              {" "}
-              Click on confirm to delete this account{" "}
+              {modalContent === "delete"
+                ? "Click on confirm to delete this account"
+                : "Click on confirm to Sign Out from this account"}
             </p>
           </Modal>
-          <span onClick={handleSignout} className="text-red-700 cursor-pointer">
+          {/* <span onClick={handleSignout}  className="text-red-700 cursor-pointer"> */}
+          <span
+            onClick={() => showModal("signOut")}
+            className="text-red-700 cursor-pointer"
+          >
             Sign out
           </span>
         </div>
