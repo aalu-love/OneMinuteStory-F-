@@ -82,7 +82,7 @@ function StoryFeed() {
       //   generatedStoryData.generatedStory.data.generatedStoryData
       // );
       setGeneratedStory(
-        generatedStoryData.generatedStory.data.generatedStoryData    // TODO: make this look better
+        generatedStoryData.generatedStory.data.generatedStoryData // TODO: make this look better
       );
       setGeneratedStoryDataAdded(false);
       setTimeout(() => {
@@ -118,60 +118,65 @@ function StoryFeed() {
             <div className="story-container">
               {optionRender(specificStory.story)}
             </div>
-            <div>
-              <div
-                className={
-                  disabledGenerateButton
-                    ? "disabled-button-container"
-                    : "button-container"
-                }
-              >
-                <Button
-                  disabled={disabledGenerateButton}
-                  onClick={handleGenerateStory}
-                  title={
+
+            {currentUser?.email ? (
+              <div>
+                <div
+                  className={
                     disabledGenerateButton
-                      ? "Please wait for 5 seconds"
-                      : undefined
+                      ? "disabled-button-container"
+                      : "button-container"
                   }
                 >
-                  AUTO GENERATE
-                </Button>
-              </div>
-              {generatedStory ? (
-                // <div>{generatedStory}</div>
-                <div>
-                  <div className="generatedStory-container">
-                    {generatedStory}
-                  </div>
-                  <div
-                    className={
-                      generatedStoryDataAdded
-                        ? "disabled-button-container"
-                        : "button-container"
+                  <Button
+                    disabled={disabledGenerateButton}
+                    onClick={handleGenerateStory}
+                    title={
+                      disabledGenerateButton
+                        ? "Please wait for 5 seconds"
+                        : undefined
                     }
                   >
-                    <Button
-                      onClick={handleAddGeneratedStory}
-                      disabled={generatedStoryDataAdded}
-                      title={
+                    AUTO GENERATE
+                  </Button>
+                </div>
+                {generatedStory ? (
+                  // <div>{generatedStory}</div>
+                  <div>
+                    <div className="generatedStory-container">
+                      {generatedStory}
+                    </div>
+                    <div
+                      className={
                         generatedStoryDataAdded
-                          ? "Story already added"
-                          : "Add story"
+                          ? "disabled-button-container"
+                          : "button-container"
                       }
                     >
-                      Loved what&#39;s generated ! <br></br> Click here to add
-                      it
-                    </Button>
+                      <Button
+                        onClick={handleAddGeneratedStory}
+                        disabled={generatedStoryDataAdded}
+                        title={
+                          generatedStoryDataAdded
+                            ? "Story already added"
+                            : "Add story"
+                        }
+                      >
+                        Loved what&#39;s generated ! <br></br> Click here to add
+                        it
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="generatedStory-container">
-                  {" "}
-                  GENERATED STORY WILL SHOW HERE
-                </div>
-              )}
-            </div>
+                ) : (
+                  <div className="generatedStory-container">
+                    {" "}
+                    GENERATED STORY WILL SHOW HERE
+                  </div>
+                )}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           <div>No story found</div>
