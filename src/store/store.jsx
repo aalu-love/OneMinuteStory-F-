@@ -20,7 +20,9 @@ const persistedReducer = persistReducer(persistConfig, rootreducer);
 
 export const store = createStore(persistedReducer, applyMiddleware(thunk));
 
-window.myStore = store;
+if(import.meta.env.VITE_STORE_VIEWABLE === "true") {
+    window.myStore = store;
+}
 
 export const persistor = persistStore(store);
 // export default store;

@@ -1,17 +1,21 @@
 import { Button } from "antd";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getStoryData } from "../../store/action";
 import { NavLink } from "react-router-dom";
 import OpenAI from "openai";
+import { Homepage } from "../../constants/storyConstants";
 
 import "./homepage.scss";
 
 function HomePage2() {
   const dispatch = useDispatch();
+  const storyData = useSelector((state) => state?.oneMinuteStory?.storyData);
 
   useEffect(() => {
-    dispatch(getStoryData());
+    if(storyData?.length === 0) {
+      dispatch(getStoryData());
+    }
   }, []);
 
   return (
@@ -22,18 +26,16 @@ function HomePage2() {
                         * This app is still in production, but you can still use
                         demo version of this app.
                     </p> */}
-          <p className="title">One Minute Story</p>
+          <p className="title"> {Homepage.TITLE} </p>
           <p className="description">
-            Ignite creativity in 60 seconds! Choose a title, feel the rush, and 
-            craft captivating tales against the clock. Join a vibrant community
-            of storytellers for an exhilarating journey.
+            {Homepage.DESCRIPTION}
           </p>
           <div className="button-container">
             <Button>
-              <NavLink to="/view_stories">View Stories</NavLink>
+              <NavLink to="/view_stories">{Homepage.VIEW_BUTTON}</NavLink>
             </Button>
             <Button>
-              <NavLink to="/add_story">Add Story</NavLink>
+              <NavLink to="/add_story">{Homepage.ADD_BUTTON}</NavLink>
             </Button>
           </div>
         </div>
