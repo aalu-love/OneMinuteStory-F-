@@ -1,5 +1,7 @@
+# Name of the GitHub Actions workflow (shown in the Actions tab)
 name: OMS
 
+# Trigger this workflow on pull requests targeting the `main` branch
 on:
   pull_request:
     branches:
@@ -7,13 +9,27 @@ on:
 
 jobs:
   test:
-  runs-on: ubuntu-latest
-  container:
-    image: node:20
-  steps:
-    - uses: actions/checkout@v3
-      with:
-        node-version: '20'
-    - run: npm ci
-    # - run: npm run test   //for testing
-    - run: npm run build
+    # Use the latest Ubuntu runner as the base environment
+    runs-on: ubuntu-latest
+
+    # Use the official Node.js 20 Docker container for job execution
+    container:
+      image: node:20
+
+    steps:
+      # Step 1: Check out the source code from the repo
+      - uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js version 20 (redundant if using a Node container, but harmless)
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # Specify the Node.js version
+
+      # Step 3: Install dependencies using npm in CI mode
+      - run: npm ci
+
+      # Step 4 (optional): Run tests (uncomment to enable)
+      # - run: npm run test   # for testing
+
+      # Step 5: Build the application
+      - run: npm run build
