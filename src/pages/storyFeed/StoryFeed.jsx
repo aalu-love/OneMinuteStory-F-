@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 
 import "./storyFeed.scss";
 import { Button, Switch } from "antd";
+import test_image from "../../assets/test_image.png";
 
 function StoryFeed() {
   const dispatch = useDispatch();
@@ -115,6 +116,9 @@ function StoryFeed() {
                 onChange={(prev) => setOption(!prev)}
               />
             </span>
+            <div className="imageContainer">
+              <img src={test_image} alt="Cover Image" />
+            </div>
             <div className="story-container">
               {optionRender(specificStory.story)}
             </div>
