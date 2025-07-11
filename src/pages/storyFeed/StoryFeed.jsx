@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AddStory from "../addStory/AddStory";
 import {
   generateStoryData,
   getStoryData,
   setStoryData,
+  generateCoverImage,
+  getCoverImage
 } from "../../store/action";
 import { useDispatch } from "react-redux";
 
@@ -18,15 +20,35 @@ function StoryFeed() {
   const [generatedStoryDataAdded, setGeneratedStoryDataAdded] = useState(false);
   const [disabledGenerateButton, setDisabledGenerateButton] = useState(false);
 
+  const [image, setImage] = useState("");
+
   const [paraOption, setOption] = useState(true);
   const titleId = useSelector((state) => state?.oneMinuteStory?.titleId);
   const storyData = useSelector((state) => state?.oneMinuteStory?.storyData);
   const generatedStoryData = useSelector((state) => state?.oneMinuteStory);
+  const coverImage = useSelector(
+    (state) => state?.oneMinuteStory?.generatedCoverImage?.image
+  );
   const currentUser = useSelector(
     (state) => state?.oneMinuteStory?.currentUser?.data
   );
 
   const specificStory = storyData?.find((item) => item?._id === titleId);
+
+  useEffect(() => {
+    const storyId = specificStory._id;
+
+    // if (specificStory) {
+    //   console.info("Specific Story:", specificStory);
+    //   setImage(specificStory?.mainCoverImage);
+    // } else {
+    //   setImage(test_image);
+    // }
+    // // Fetch story data when the component mounts
+    // dispatch(getStoryData());
+    // getCoverImage(storyId);
+    showCoverImageOnLoad(storyId);
+  },[image])
 
   const optionRender = (story) => {
     if (paraOption) {
@@ -66,6 +88,29 @@ function StoryFeed() {
       dispatch(getStoryData());
     }, 500);
   };
+
+  const handleGenerateCoverImage = async () => {
+    // console.info("Generating cover image for story:", specificStory.title);
+    // console.info("Generating cover image...", specificStory);
+    const storyId = specificStory._id;
+    const combinedStory = specificStory.story
+      .map((item) => item.content)
+      .join(" ");
+    // await dispatch(generateCoverImage(combinedStory, storyId));
+    const newImage = await generateCoverImage(combinedStory, storyId);
+    console.warn("Generated Image:", newImage);
+
+    // const coverImageData = await getCoverImage(storyId);
+    // console.warn("Before", image);
+    setImage(newImage?.image);
+    // console.warn("After", image);
+  };
+
+  const showCoverImageOnLoad = async (storyId) => {
+    const check = await getCoverImage(storyId);
+    console.error("Fetching cover image for storyId:", check);
+    setImage(check.mainCoverImage);
+  }
 
   const handleGenerateStory = async () => {
     try {
@@ -117,7 +162,7 @@ function StoryFeed() {
               />
             </span>
             <div className="imageContainer">
-              <img src={test_image} alt="Cover Image" />
+              <img src={image} alt="Cover Image" />
             </div>
             <div className="story-container">
               {optionRender(specificStory.story)}
@@ -141,7 +186,30 @@ function StoryFeed() {
                         : undefined
                     }
                   >
-                    AUTO GENERATE
+                    AUTO GENERATE STORY
+                  </Button>
+
+                  {/* {image && (
+                    <img
+                      src={image}
+                      alt="Generated"
+                      style={{
+                        width: "200px",
+                        height: "200px",
+                        border: "2x solid red",
+                      }}
+                    />
+                  )} */}
+                  <Button
+                    // disabled={disabledGenerateButton}
+                    onClick={handleGenerateCoverImage}
+                    // title={
+                    //   disabledGenerateButton
+                    //     ? "Please wait for 5 seconds"
+                    //     : undefined
+                    // }
+                  >
+                    Generate Cover Image
                   </Button>
                 </div>
                 {generatedStory ? (

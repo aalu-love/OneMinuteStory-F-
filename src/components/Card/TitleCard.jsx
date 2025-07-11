@@ -14,11 +14,12 @@ import {
   HeartFilled,
   QuestionCircleOutlined,
 } from "@ant-design/icons";
+import dummyImage from "../../assets/test_image.png";
 
 import "./titleCard.scss";
 // import { useState } from "react";
 
-function TitleCard({ titleData, id, email, author, likes, likedBy }) {
+function TitleCard({ titleData, id, email, author, likes, likedBy, coverImage }) {
   // const [liked, setLiked] = useState(false);
 
   const currentUser = useSelector(
@@ -67,6 +68,11 @@ function TitleCard({ titleData, id, email, author, likes, likedBy }) {
       <div className="main-container">
         {/* Current Stories */}
         <Card key={id} className="card-content">
+          <img
+            src={coverImage}
+            alt="Cover Image"
+            className="story-cover-image"
+          />
           {currentUser?.email === email ? (
             <Popconfirm
               title="Delete the Story"
@@ -151,6 +157,7 @@ TitleCard.propTypes = {
   author: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
   likedBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  coverImage: PropTypes.string,
 };
 
 export default TitleCard;

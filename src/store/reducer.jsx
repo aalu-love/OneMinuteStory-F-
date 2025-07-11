@@ -13,7 +13,8 @@ import {
     DELETE_USER,
     SIGNOUT_USER,
     UPDATE_USER_ERROR,
-    GENERATE_STORY_DATA
+    GENERATE_STORY_DATA,
+    // GENERATED_COVER_IMAGE
 } from "./action-types";
 
 const initialState = {
@@ -27,6 +28,7 @@ const initialState = {
     user: null,
     updateError: false,
     generatedStory: {},
+    // generatedCoverImage: {}
 };
 
 const storyReducer = (state = initialState, action) => {
@@ -39,6 +41,9 @@ const storyReducer = (state = initialState, action) => {
 
         case GENERATE_STORY_DATA:
             return { ...state, generatedStory: action.payload };
+
+        // case GENERATED_COVER_IMAGE:
+        //     return { ...state, generatedCoverImage: action.payload };
 
         case DELETE_STORY_DATA:
             return { ...state, deletedStory: action.payload };

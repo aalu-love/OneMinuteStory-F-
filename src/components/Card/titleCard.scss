@@ -38,6 +38,13 @@
             var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     }
 
+    .story-cover-image{
+        width: 40rem;
+        height: 20rem;
+        object-fit: contain;
+        border-radius: 0.75rem /* 12px */;
+    }
+
     @media screen and (max-width: 768px) {
         .card-content {
             display: flex;
