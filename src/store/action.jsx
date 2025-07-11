@@ -19,6 +19,7 @@ import {
   SIGNOUT_USER,
   UPDATE_USER_ERROR,
   GENERATE_STORY_DATA,
+  // GENERATED_COVER_IMAGE,
 } from "./action-types";
 
 export const actionGetStoryData = (data) => ({
@@ -35,6 +36,11 @@ export const actionSetGeneratedStory = (data) => ({
   type: GENERATE_STORY_DATA,
   payload: data,
 });
+
+// export const actionSetGeneratedCoverImage = (data) => ({
+//   type: GENERATED_COVER_IMAGE,
+//   payload: data,
+// });
 
 export const actionDeleteStoryData = (data) => ({
   type: DELETE_STORY_DATA,
@@ -151,7 +157,7 @@ export function setStoryData(title, story, email, username) {
 
 export function generateStoryData(data) {
   // console.log("DATAAAAAA", data[0].content);
-  // console.log("DATAAAAAA------", data);
+  // generateCoverImage(data);
   return (dispatch) => {
     axios
       .post(`${url}/api/generateStory`, {
@@ -167,6 +173,30 @@ export function generateStoryData(data) {
         // console.log("Generate Story Error", error);
       });
   };
+}
+
+export function generateCoverImage(data, storyId) {
+  // console.log("DATAAAAAA", data[0].content);
+  // console.log("DATAAAAAA------", data);
+  const data1 = {
+    data,
+    storyId,
+  };
+  return axios
+      .post(`${url}/api/generateCoverImage`, {
+        story: data1,
+      })
+      .then((response) => {
+        // dispatch(actionSetGeneratedCoverImage(response.data));
+        console.log("Response generated cover image", response.data);
+        return response.data;
+        // console.log("Response generated story", response.data.generatedStoryData);
+      })
+      .catch((error) => {
+        const data = error.response;
+        // dispatch(actionSetGeneratedStory(data));
+        console.log("Generate COVER IMAGE Error", error);
+      });
 }
 
 export function deleteStoryData(id) {
@@ -386,4 +416,18 @@ export function likeStory(storyID, email) {
       console.log("Error LikeStory", error);
     }
   };
+}
+
+export function getCoverImage(storyId) {
+  return axios
+    .get(`${url}/api/getCoverImage?storyId=${storyId}`)
+    .then((response) => {
+      const data = response.data;
+      // console.log("Cover Image Data:", data);
+      return data;
+    })
+    .catch((error) => {
+      // console.log("Error fetching cover image:", error);
+      throw error;
+    });
 }

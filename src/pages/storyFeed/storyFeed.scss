@@ -187,11 +187,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid #ccc;
-        object-fit: fill;
+        // border: 2px solid #ccc;
+        // object-fit: fill;
 
         img {
-            width: 700px;
+            width: 40rem;
+            height: 20rem;
+            // object-fit: scale-down
+            object-fit: contain;
         }
     }
 
